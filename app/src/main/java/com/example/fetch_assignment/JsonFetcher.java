@@ -13,6 +13,7 @@ import java.util.List;
 
 public class JsonFetcher {
 
+    //asynchronous operation to fetch data
     public static void fetchData(final DataFetchedListener listener) {
         new Thread(new Runnable() {
             @Override
@@ -36,6 +37,7 @@ public class JsonFetcher {
         }).start();
     }
 
+    //Parses the JSON string
     private static List<Item> parseJsonData(String jsonData) {
         List<Item> items = new ArrayList<>();
         try {

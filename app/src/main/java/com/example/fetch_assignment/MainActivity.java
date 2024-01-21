@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements JsonFetcher.DataF
         SearchView searchView = findViewById(R.id.searchView);
         Button btnShowAll = findViewById(R.id.btnShowAll);
 
+        // Set a listener to perform search operation.
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -56,9 +57,11 @@ public class MainActivity extends AppCompatActivity implements JsonFetcher.DataF
             }
         });
 
+        // "Show All" button resets the filter.
         btnShowAll.setOnClickListener(v -> adapter.filterData(-1));
     }
 
+    //Filters content based on the list ID
     private void filterData(String query) {
         try {
             int listId = Integer.parseInt(query);
@@ -69,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements JsonFetcher.DataF
     }
 
     @Override
+    //Callback method when data fetch is complete
     public void onDataFetched(List<Item> items) {
         runOnUiThread(() -> adapter.setItems(items));
     }

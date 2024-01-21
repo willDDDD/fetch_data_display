@@ -19,6 +19,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         return new ViewHolder(view);
     }
 
+    //Binds data to each ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Item item = itemsFiltered.get(position);
@@ -32,6 +33,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         return itemsFiltered.size();
     }
 
+    //Filters the data based on the list ID
     public void filterData(int listId) {
         if (listId == -1) {
             itemsFiltered = new ArrayList<>(items);
@@ -57,6 +59,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         }
     }
 
+    //Updates the main and filtered data sets
     public void setItems(List<Item> items) {
         this.items = items;
         filterData(-1);
